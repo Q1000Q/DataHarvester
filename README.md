@@ -15,7 +15,7 @@
 1. Install Python 3.x from the [official website](https://www.python.org/downloads/).
 2. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/DataHarvester.git
+    git clone https://github.com/q1000q/DataHarvester.git
     ```
 3. Navigate to the server directory:
     ```sh
@@ -40,7 +40,7 @@
 1. Install [PlatformIO IDE](https://platformio.org/install/ide?install=vscode) for Visual Studio Code.
 2. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/DataHarvester.git
+    git clone https://github.com/q1000q/DataHarvester.git
     ```
 3. Open the project folder in Visual Studio Code.
 
