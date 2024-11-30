@@ -26,6 +26,11 @@
     pip install -r requirements.txt
     ```
 
+#### Configuration (optional)
+1. Create and edit .env file in server directory (or use system env varibles)
+2. If you want to change the directory where the compressed filles will be dumped add `UPLOAD_FOLDER` variable with relative path from `server.py`
+3. If you want to get notifications when you get a zip file, set the `NTFY_ADDRESS` to use ntfy.sh notification services
+
 #### Running the Server
 1. Start the Flask server:
     ```sh

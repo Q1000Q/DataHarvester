@@ -1,9 +1,14 @@
 from flask import Flask, request, send_from_directory, jsonify
 import os
 from datetime import datetime
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+NTFY_ADDRESS = os.getenv('NTFY_ADDRESS') or ""
+UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER') or "uploads"
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/')
@@ -17,7 +22,13 @@ def upload_file():
     file = request.files['file']
     if file.filename == '':
         return jsonify({"error": "No selected file"}), 400
+    
     current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+    if NTFY_ADDRESS != "":
+        message = f"File {file.filename} uploaded successfully at {current_time}".encode(encoding='utf-8')
+        requests.post(NTFY_ADDRESS, data=message)
+
     file_path = os.path.join(UPLOAD_FOLDER, f"{current_time}_{file.filename}")
     file.save(file_path)
     return jsonify({"message": "File uploaded successfully"}), 200
