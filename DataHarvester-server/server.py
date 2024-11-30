@@ -23,7 +23,7 @@ def upload_file():
     if file.filename == '':
         return jsonify({"error": "No selected file"}), 400
     
-    current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    current_time = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     if NTFY_ADDRESS != "":
         message = f"File {file.filename} uploaded successfully at {current_time}".encode(encoding='utf-8')
